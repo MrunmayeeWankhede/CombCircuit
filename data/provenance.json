@@ -1,0 +1,146 @@
+{
+  "repository": "https://github.com/JekelyLab/Jokura_2024_ctenophore_apical_organ",
+  "commit": "ccdc5b2d8e897dcb4d1df1d4a651b6925844320a",
+  "files": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/README.md",
+      "source": "pinned GitHub",
+      "sha256": "bb389ec35384318b9730b0fb2169b64992b22dd26d593714bc4656a886082897",
+      "bytes": 2904
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/LICENSE",
+      "source": "pinned GitHub",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149
+    },
+    {
+      "path": "analysis/data/catmaid-connectivity-matrix.json",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/data/catmaid-connectivity-matrix.json",
+      "source": "pinned GitHub",
+      "sha256": "d1d5b38ee1adaeb8e93a9d633822f387f8ab1fa44f0e9d59a98f69390fdb964f",
+      "bytes": 5530
+    },
+    {
+      "path": "analysis/scripts/Figure3.R",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/scripts/Figure3.R",
+      "source": "pinned GitHub",
+      "sha256": "490f05bef381083453f3f03a9634e04026420e8572776e376f8bbead53efb7c1",
+      "bytes": 28617
+    },
+    {
+      "path": "analysis/scripts/Figure3_figure_supplement1.R",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/scripts/Figure3_figure_supplement1.R",
+      "source": "pinned GitHub",
+      "sha256": "fd1e51c461f9942ff6d2640c457cf00b7988777b1aca966cae5189ae8c4773fc",
+      "bytes": 8440
+    },
+    {
+      "path": "analysis/scripts/packages_and_functions.R",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/scripts/packages_and_functions.R",
+      "source": "pinned GitHub",
+      "sha256": "a87afb85af225a2664d6f593164cced7d081e73e5525120fc7e3114aab0d884c",
+      "bytes": 4442
+    },
+    {
+      "path": "analysis/scripts/helper_scripts.R",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/scripts/helper_scripts.R",
+      "source": "pinned GitHub",
+      "sha256": "f8226cdeda4ad186a9286157a3564a0848a7a806a08365a7fd940dc75aac6e70",
+      "bytes": 5020
+    },
+    {
+      "path": "analysis/data/stats_master.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/data/stats_master.csv",
+      "source": "pinned GitHub",
+      "sha256": "440779e3bd669a34d6fedfb7df2ee3ce28bc8ee40d88508cca2b0a06da33c018",
+      "bytes": 57478
+    },
+    {
+      "path": "analysis/data/stats_synapse.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/data/stats_synapse.csv",
+      "source": "pinned GitHub",
+      "sha256": "04e4c4287f0a45dd2ccf596e5a59baa30463bd752fbd994cc752d2118f56d9bb",
+      "bytes": 66382
+    },
+    {
+      "path": "analysis/data/arrest_rebeat_time_differences.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/analysis/data/arrest_rebeat_time_differences.csv",
+      "source": "pinned GitHub",
+      "sha256": "59e3a6b1646b76f162faf23cb2b4d7c352e05e1e1fa6357c6e9dd16f3b87c7f5",
+      "bytes": 607
+    },
+    {
+      "path": "manuscript/Manuscript.qmd",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/Manuscript.qmd",
+      "source": "pinned GitHub",
+      "sha256": "2fcffeb15b334f61f429c179d4dbaf176a2b2280c35a543aaa7c5b7b15be1982",
+      "bytes": 67183
+    },
+    {
+      "path": "manuscript/source_data/Figure3_source_data1.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/source_data/Figure3_source_data1.csv",
+      "source": "pinned GitHub",
+      "sha256": "cc35faa575a6a26f6be61b09fd9bfad429511ca353da8c050a51a441d309952c",
+      "bytes": 47742
+    },
+    {
+      "path": "manuscript/source_data/Figure3_source_data2.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/source_data/Figure3_source_data2.csv",
+      "source": "pinned GitHub",
+      "sha256": "ec23018a0504c53ed4c4bb81bdbe3b7d18033363a792187c74f35cd2cab1a1cc",
+      "bytes": 1502
+    },
+    {
+      "path": "manuscript/source_data/Figure4_source_data1.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/source_data/Figure4_source_data1.csv",
+      "source": "pinned GitHub",
+      "sha256": "eaddd6d3e43984cb84435f4d01c1775c293e095e6d51693a11ddf8915f67267e",
+      "bytes": 604
+    },
+    {
+      "path": "manuscript/source_data/Figure4_source_data2.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/source_data/Figure4_source_data2.csv",
+      "source": "pinned GitHub",
+      "sha256": "9e990dd3cede8057e5912cd712466f2f728bfd666c0908a4b51e5bc736135f56",
+      "bytes": 627
+    },
+    {
+      "path": "manuscript/source_data/Figure4_source_data3.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/source_data/Figure4_source_data3.csv",
+      "source": "pinned GitHub",
+      "sha256": "984d676e4bc904cb3c83c66001e40e6a9ca4cd4140f2e7dbf1ea4171d592e45f",
+      "bytes": 576
+    },
+    {
+      "path": "manuscript/source_data/Figure4_source_data4.csv",
+      "url": "https://raw.githubusercontent.com/JekelyLab/Jokura_2024_ctenophore_apical_organ/ccdc5b2d8e897dcb4d1df1d4a651b6925844320a/manuscript/source_data/Figure4_source_data4.csv",
+      "source": "pinned GitHub",
+      "sha256": "c6d6830f016b36b996c0fcd23c4c1dd68145e062903e7f96ff9a15ad226c5c69",
+      "bytes": 1258
+    },
+    {
+      "path": "catmaid/4019221.json",
+      "url": "https://catmaid.jekelylab.ex.ac.uk/33/skeletons/4019221/compact-detail?with_connectors=true&with_tags=true",
+      "source": "live CATMAID snapshot, retrieved 2026-09-27",
+      "sha256": "f13f7827173e33e713b86068de9fbe0b5fa62b97c051649bb5829de260c5a225",
+      "bytes": 489766
+    },
+    {
+      "path": "catmaid/4018492.json",
+      "url": "https://catmaid.jekelylab.ex.ac.uk/33/skeletons/4018492/compact-detail?with_connectors=true&with_tags=true",
+      "source": "live CATMAID snapshot, retrieved 2026-09-27",
+      "sha256": "6f778fb7d35c0ce28bd4ba6fb00e06dc34a86a69d2c7e15704b11c11b1e310b5",
+      "bytes": 300654
+    },
+    {
+      "path": "catmaid/4018688.json",
+      "url": "https://catmaid.jekelylab.ex.ac.uk/33/skeletons/4018688/compact-detail?with_connectors=true&with_tags=true",
+      "source": "live CATMAID snapshot, retrieved 2026-09-27",
+      "sha256": "898bcb5760c0ba9a18dad9d497ee3530ebd703d05a58fb136be852d934edf08c",
+      "bytes": 185798
+    }
+  ]
+}

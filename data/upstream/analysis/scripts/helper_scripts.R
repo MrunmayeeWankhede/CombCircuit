@@ -1,0 +1,151 @@
+# script for finding mistakes in the catmaid database, such as skeletons without
+# annotations, cilia which don't have both tip and centriole tagged, etc.
+
+source("analysis/scripts/packages_and_functions.R")
+
+# find skeletons without annotations -------------------------------------------
+skids <- unlist(
+  catmaid_fetch(path = paste(pid, "/skeletons/", sep = "")))
+
+annot <- catmaid_get_annotations_for_skeletons(skids, pid = pid)
+
+# no annotations at all
+skids_with_annot <- annot$skid |> unique()
+# skids_without_annot <- setdiff(skids, skids_with_annot)
+
+# without specific annotations
+no_Q_annot <- annot |> filter(annotation != "Q1" & annotation != "Q2" & annotation != "Q3" & annotation != "Q4" ) |> 
+  select(skid) |> pull() |> unique()
+
+
+# centrioles -------------------------------------------------------------------
+read_smooth_neuron <- function(annotation){
+  nlapply(read.neurons.catmaid(annotation, pid = pid),
+          function(x)
+            smooth_neuron(x, sigma = 1000))
+}
+
+balancer <- read_smooth_neuron("celltype:balancer")
+bridge <- read_smooth_neuron("celltype:bridge")
+
+plot_background_oral()
+plot3d(
+  bridge, soma = TRUE, color = Okabe_Ito[c(1,5,8)], 
+  alpha = 0.3, lwd = c(4,3,3)
+)
+plot3d(
+  balancer, soma = TRUE, color = Okabe_Ito[8], 
+  alpha = 0.1, lwd = 3
+)
+
+
+get_treenode_pos <- function(treenodeid, pid) {
+  path <- paste("/", pid, "/node/get_location", sep = "")
+  pos <- catmaid_fetch(path = path,
+                       body = list(tnid=treenodeid))
+  xyz <- data.frame(x = pos[[2]],
+                    y = pos[[3]],
+                    z = pos[[4]])
+}
+
+
+plot_tag <- function(tagname, pid, color) {
+  tags_all <- catmaid_get_label_stats(pid = pid)
+  treenodes_with_tags_all <- tags_all |> 
+    filter(labelName==tagname) |> 
+    select(treenodeID) |>
+    unlist() |>
+    unique()
+  
+  pos <- lapply(treenodes_with_tags_all, get_treenode_pos, pid) |>
+    bind_rows()
+  
+  plot3d(pos,
+         add = TRUE, 
+         col=color, 
+         size=5,
+         alpha=0.9)
+}
+
+plot_tag("centriole", pid, "magenta")
+plot_tag("basal body", pid, "cyan")
+
+
+
+
+# find cilium tips which are not tagged ----------------------------------------
+tags <- catmaid_get_label_stats(pid = pid)
+
+skids <- tags[tags$labelName == "basal body", "skeletonID"] |> unique()
+
+cilium_annot_mistake <- function(skid) {
+  neurons_info <- read.neurons.catmaid(skid, pid = pid)
+  neuron_info <- neurons_info[[1]]
+  annotations <- neurons_info %>% attr("anndf")
+  if (length(annotations) == 0) {
+    c_pocket <- 0
+  } else {
+    c_pocket <- annotations %>% select(annotation) %>% 
+      filter(annotation == "ciliary_pocket_yes") %>% pull() %>% length()
+  }
+  neuron_name <- catmaid_fetch(path = paste(pid, "/skeleton/neuronnames", sep = ""),
+                               body = list(skids=skid))[[1]]
+  n_bb <- neuron_info$tags$`basal body` |> length()
+  n_ctip <- neuron_info$tags$`cilium tip` |> length()
+  n_ccut <- neuron_info$tags$`cilium cut` |> length()
+  n_ct_extra <- neuron_info$tags$`cilium tip extracellular` |> length()
+  n_c_exit <- neuron_info$tags$`exit_ciliary_pocket` |> length()
+  if (n_ctip + n_ccut != n_bb || (c_pocket == 1 && n_ct_extra != n_c_exit)) {
+    return(list(skid=skid, 
+               neuron_name=neuron_name, 
+               n_ctip=n_ctip, 
+               n_ccut=n_ccut, 
+               n_bb=n_bb,
+               n_ct_extra=n_ct_extra,
+               n_c_exit=n_c_exit))
+  }
+}
+
+c_annot_mistakes <- lapply(skids, cilium_annot_mistake) %>% bind_rows()
+
+
+# find cilia which don't have basal body annotated -----------------------------
+
+tags <- catmaid_get_label_stats(pid = pid)
+
+skids <- tags %>% select(skeletonID) %>% pull() %>% unique()
+
+for (skid in skids) {
+  # check if number of cilia matches number of basal bodies
+  n_ctip <- tags %>% filter(skeletonID == skid) %>% 
+    filter(labelName == "cilium tip" | labelName ==  "cilium cut") %>% nrow()
+  n_bb <- tags %>% filter(skeletonID == skid) %>% 
+    filter(labelName == "basal body") %>% nrow()
+  # if it doesn't, check which cilia don't have basal body
+  if (n_ctip < n_bb) {
+    #paste("skid", skid, "has less cilia than basal bodies.") %>% print()
+  } else if (n_ctip > n_bb) {
+    paste("skid", skid, "has more cilia than basal bodies.") %>% print()
+    ctips <- tags %>% filter(skeletonID == skid) %>% 
+      filter(labelName == "cilium tip" | labelName ==  "cilium cut") %>%
+      select(treenodeID) %>% pull()
+    bbs <- tags %>% filter(skeletonID == skid) %>% 
+      filter(labelName == "basal body") %>%
+      select(treenodeID) %>% pull()
+    neuron_info <- read.neuron.catmaid(skid, pid = pid)
+    for (ctip_id in ctips) {
+      treenode_id <- ctip_id
+      while (!(treenode_id %in% bbs)) {
+        index <- match(treenode_id, neuron_info$d$PointNo)
+        parent_id <- neuron_info$d$Parent[[index]]
+        if (parent_id == -1) {
+          print("root reached before basal body tag, from cilium tip")
+          print(ctip_id)
+          break
+        }
+        treenode_id <- parent_id
+      }
+    }
+  }
+}
+

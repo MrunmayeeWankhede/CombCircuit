@@ -1,0 +1,20 @@
+{
+  "version": "0.2",
+  "numerical_tests_passed": 10,
+  "live_reference_scenarios": 9,
+  "max_full_state_error_mV": 1.460591647628462e-10,
+  "reference": "SciPy sparse factorization of the same anatomical model",
+  "scenarios": [
+    "default",
+    "bridge feedback off",
+    "balanced cut",
+    "arbitrary cut",
+    "negative injection",
+    "thin cable negative contact sign",
+    "zero input",
+    "individual bridge input",
+    "live parameter changes at 40 ms"
+  ],
+  "browser_checks": "live_browser_checks.json",
+  "biological_validation": false
+}

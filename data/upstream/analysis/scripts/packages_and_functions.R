@@ -1,0 +1,140 @@
+rm(list = ls(all.names = TRUE)) #will clear all objects includes hidden objects.
+gc() #free up memory and report the memory usage.
+
+#package list
+pkgs = c(
+  "catmaid", "plyr", "tidyverse",
+  "cowplot", "png", "igraph", 
+  "networkD3", "visNetwork","webshot2", 
+  "patchwork", "RColorBrewer", "tidygraph", 
+  "av", "jpeg", "magick",
+  "ggbeeswarm", "scales", "ggsignif", 
+  "rstatix", "purrr"
+  )
+
+# load packages
+inst = lapply(pkgs, library, character.only = TRUE) 
+
+# catmaid connection, needs username, password AND token - weird!
+{
+  catmaid_url="https://catmaid.jekelylab.ex.ac.uk/"
+  pid = 33
+  stack_id=24
+  # can run this separate file using source function
+  conn <- catmaid_login(server=catmaid_url, authname="AnonymousUser")
+  #for larger calls we need to use http/1, see https://www.gitmemory.com/issue/natverse/rcatmaid/158/641537466
+  #for this we configure to http/1.1
+  conn_http1 = catmaid_login(conn=conn, config=httr::config(ssl_verifypeer=0, http_version=1))
+}
+
+#system("git submodule init")
+#system("git submodule update")
+#system("cd rcatmaid_functions_library && git pull origin main && git checkout 7d228b0019b96c5031dd6f0611d6647a52d5159f")
+source("rcatmaid_functions_library/functions.R")
+
+#define some colors
+#From Color Universal Design (CUD): https://jfly.uni-koeln.de/color/
+Okabe_Ito <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", 
+               "#CC79A7", "#000000")
+
+blues <- brewer.pal(9, 'Blues')
+bluepurple <- brewer.pal(9, 'BuPu')
+oranges <- brewer.pal(9, 'YlOrRd')
+
+#save session info and Rstudio version info for reproducibility
+writeLines(capture.output(sessionInfo()), "analysis/scripts/sessionInfo.txt")
+writeLines(capture.output(rstudioapi::versionInfo()), "analysis/scripts/versionInfo.txt")
+
+# functions ----------------------
+
+# skids_by_2annotations has been replaced by get_skids_with_annot from rcatmaid_functions_library
+
+#plot_background <- function(x){
+#  nopen3d() # opens a pannable 3d window
+#  par3d(zoom=0.75)
+#  nview3d("frontal", extramat=rotationMatrix(1.2, 0, 0, 1))
+#  par3d(windowRect = c(0, 0, 800, 800)) #resize for frontal view
+#  nview3d("anterior", extramat = rotationMatrix(1.05, 250, -200, 1000))
+#  par3d(zoom=0.7)
+#  #y-axis clip
+#  clipplanes3d(1, 0, 0, -11500)
+#  #x-axis clip
+#  clipplanes3d(0, 1, 0, -24000)
+#  
+#}
+
+plot_background_oral <- function(x){
+  nopen3d() # opens a pannable 3d window
+  par3d(zoom=0.75)
+  nview3d("ventral", extramat=rotationMatrix(0.9, 0.3, -0.1, 1))
+  par3d(windowRect = c(0, 0, 800, 800)) #resize for frontal view
+}
+
+read_smooth_neuron <- function(annotation){
+  nlapply(
+  read.neurons.catmaid(
+    annotation, pid = pid
+  ),
+  function(x) smooth_neuron(x, sigma = 1000)
+  )
+}
+
+outline <- catmaid_get_volume(
+  42, rval = c("mesh3d", "catmaidmesh", "raw"),
+  invertFaces = T, conn = NULL, pid = pid
+  )
+dome_cavity <- catmaid_get_volume(
+  41, rval = c("mesh3d", "catmaidmesh", "raw"),
+  invertFaces = T, conn = NULL, pid = pid
+  )
+
+# define views --------------
+
+aboral <- function(){
+  nview3d("anterior", extramat = rotationMatrix(1.05, 250, -200, 1000))
+}
+
+sagittal <- function(){
+  nview3d("left", extramat = rotationMatrix(300, 4200, 1800, 800))
+}
+
+tentacular <- function(){
+  nview3d("left", extramat = rotationMatrix(-1.7, 190, -120, -140))
+}
+
+# crop_catmaid function has been replaced by crop_substack from rcatmaid_functions_library
+
+# get_celltypes function is in rcatmaid_functions_library
+
+
+#function to add a text label to a neuron and a line to one of the neurons of the neuronlist starting from the soma
+add_label_with_line <- function(neuronlist, offsetx, offsety, offsetz, side, label){
+  cords_left = unlist(as_tibble(soma(neuronlist)) %>%
+                        arrange(X) %>% slice(1) %>% as.list()
+  )
+  cords_right = unlist(as_tibble(soma(neuronlist)) %>%
+                         arrange(desc(X)) %>% slice(1) %>% as.list()
+  )
+  
+  if (side == "left") {
+    cords <- cords_left
+  } else {
+    cords <- cords_right
+  }
+  
+  print(cords)
+  lines3d(c(cords[1], cords[1]-offsetx), 
+          c(cords[2], cords[2]-offsety), 
+          c(cords[3], cords[3]-offsetz), lwd=2)
+  adj_x <- if_else(offsetx < 0, 0, 1)
+  adj_y <- if_else(offsety < 0, 1, 0)
+  
+  if (missing(label)) {
+    label <- deparse(substitute(neuronlist))
+  }
+  texts3d(c(cords[1]-offsetx, cords[2]-offsety, 
+            cords[3]-offsetz), 
+          text = label, 
+          adj = c(adj_x, adj_y, 1),
+          cex = 1.7)
+}

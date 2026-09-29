@@ -1,0 +1,23 @@
+{
+  "numerical_tests": {
+    "passed": 9,
+    "failed": 0,
+    "command": "python -m unittest discover -s tests -v"
+  },
+  "biological_validation": false,
+  "browser_checks": {
+    "engine": "Chromium / Playwright",
+    "javascript_errors": [],
+    "horizontal_overflow_390px": false,
+    "checks": [
+      "page load",
+      "scenario selection",
+      "voltage coloring",
+      "time slider",
+      "trace selection",
+      "CSV download",
+      "playback",
+      "desktop and narrow-screen captures"
+    ]
+  }
+}

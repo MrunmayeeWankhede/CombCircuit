@@ -1,0 +1,165 @@
+{
+  "status": "Exploratory synthetic pulse response; no physiological fit or novelty claim",
+  "parameters": {
+    "radius_um": 0.25,
+    "axial_resistivity_ohm_cm": 150.0,
+    "capacitance_uF_cm2": 1.0,
+    "leak_tau_ms": 20.0,
+    "point_capacitance_pF": 0.5,
+    "synaptic_current_pA": 0.05,
+    "synaptic_scale_mV": 5.0,
+    "synaptic_sign": 1,
+    "axial_scale": 1.0,
+    "pulse_pA": 1.0,
+    "pulse_start_ms": 20.0,
+    "pulse_end_ms": 40.0,
+    "duration_ms": 160.0,
+    "dt_ms": 0.5
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "stimulus_treenode": 25513213,
+  "branch_cut": {
+    "cell": 4019221,
+    "local_compartments": [
+      4255,
+      4253
+    ],
+    "partition_fraction": 0.5539498959095629,
+    "selection": "edge splitting traced cable length most evenly"
+  },
+  "metrics": {
+    "point": {
+      "ANN Q1-4": {
+        "peak_abs_mV": 0.35929205357827393,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 14.095836825800596
+      },
+      "ANN Q1Q2": {
+        "peak_abs_mV": 0.01017562454415887,
+        "peak_time_ms": 119.0,
+        "integral_mV_ms": 1.072821257571819
+      },
+      "ANN Q3Q4": {
+        "peak_abs_mV": 0.023359619416558546,
+        "peak_time_ms": 58.0,
+        "integral_mV_ms": 1.9298215376098027
+      },
+      "bridge": {
+        "peak_abs_mV": 0.1235963939341567,
+        "peak_time_ms": 56.5,
+        "integral_mV_ms": 9.527315431776604
+      },
+      "balancer": {
+        "peak_abs_mV": 0.03233951413539963,
+        "peak_time_ms": 54.5,
+        "integral_mV_ms": 2.2438222342346528
+      },
+      "stimulated compartment": {
+        "peak_abs_mV": 0.35929205357827393,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 14.095836825800596
+      }
+    },
+    "spatial": {
+      "ANN Q1-4": {
+        "peak_abs_mV": 0.3576291037305516,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 13.9657223906332
+      },
+      "ANN Q1Q2": {
+        "peak_abs_mV": 0.009840818754320423,
+        "peak_time_ms": 121.5,
+        "integral_mV_ms": 1.0385209379596168
+      },
+      "ANN Q3Q4": {
+        "peak_abs_mV": 0.02083003937972308,
+        "peak_time_ms": 60.5,
+        "integral_mV_ms": 1.724375085933653
+      },
+      "bridge": {
+        "peak_abs_mV": 0.11329066775969156,
+        "peak_time_ms": 60.0,
+        "integral_mV_ms": 9.002545454315076
+      },
+      "balancer": {
+        "peak_abs_mV": 0.03304846833552428,
+        "peak_time_ms": 53.5,
+        "integral_mV_ms": 2.2831307085176937
+      },
+      "stimulated compartment": {
+        "peak_abs_mV": 0.8865570928601364,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 24.320023753264095
+      }
+    },
+    "no_bridge_feedback": {
+      "ANN Q1-4": {
+        "peak_abs_mV": 0.35312125498501024,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 11.708983329615839
+      },
+      "ANN Q1Q2": {
+        "peak_abs_mV": 0.0018860465378047013,
+        "peak_time_ms": 53.0,
+        "integral_mV_ms": 0.10986449683172154
+      },
+      "ANN Q3Q4": {
+        "peak_abs_mV": 0.018519300816210272,
+        "peak_time_ms": 55.5,
+        "integral_mV_ms": 1.0846344128900296
+      },
+      "bridge": {
+        "peak_abs_mV": 0.10426265754671858,
+        "peak_time_ms": 56.5,
+        "integral_mV_ms": 6.52837738983645
+      },
+      "balancer": {
+        "peak_abs_mV": 0.0320806797834888,
+        "peak_time_ms": 52.5,
+        "integral_mV_ms": 1.8883016414884164
+      },
+      "stimulated compartment": {
+        "peak_abs_mV": 0.8835623960373751,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 22.315100104961115
+      }
+    },
+    "branch_cut": {
+      "ANN Q1-4": {
+        "peak_abs_mV": 0.35359234391905825,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 11.966586511387856
+      },
+      "ANN Q1Q2": {
+        "peak_abs_mV": 0.015612523653293714,
+        "peak_time_ms": 106.0,
+        "integral_mV_ms": 1.6625610921694813
+      },
+      "ANN Q3Q4": {
+        "peak_abs_mV": 0.01974655631105552,
+        "peak_time_ms": 59.0,
+        "integral_mV_ms": 1.4782672569644235
+      },
+      "bridge": {
+        "peak_abs_mV": 0.04161715692723342,
+        "peak_time_ms": 64.5,
+        "integral_mV_ms": 4.098075196505434
+      },
+      "balancer": {
+        "peak_abs_mV": 0.03678615071287739,
+        "peak_time_ms": 52.5,
+        "integral_mV_ms": 2.3004582509837705
+      },
+      "stimulated compartment": {
+        "peak_abs_mV": 1.1976065857563145,
+        "peak_time_ms": 40.0,
+        "integral_mV_ms": 32.551099049740586
+      }
+    }
+  },
+  "sensitivity_scenarios": 18
+}

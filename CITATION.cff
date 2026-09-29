@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite the original anatomical study as well as this workbench when using its results."
+title: "CombCircuit: a live comb-jelly circuit modeling workbench"
+type: software
+version: 0.2.0
+license: GPL-3.0
+authors:
+  - family-names: Wankhede
+    given-names: Mrunmayee
+abstract: "A spatial-versus-equipotential electrical model comparison on reconstructed Mnemiopsis leidyi circuit anatomy. Electrical parameters are assumed; the workbench is not biologically validated."

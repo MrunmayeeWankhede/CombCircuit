@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "continued beyond 160ms",
+    "live parameter and feedback changes",
+    "individual bridge probe and negative injection",
+    "arbor click probe",
+    "arbitrary cable cut",
+    "CSV and JSON exports",
+    "reset",
+    "mobile layout"
+  ],
+  "page_errors": []
+}

@@ -1,0 +1,69 @@
+{
+  "scope": "ANN/bridge/balancer induced subgraph",
+  "cells": 158,
+  "cell_types": {
+    "balancer": 129,
+    "ANN": 3,
+    "bridge": 26
+  },
+  "raw_contact_rows": 1132,
+  "unique_connectors": 430,
+  "presynaptic_connectors": 396,
+  "matched_links_all_types": 684,
+  "post_only_connectors": [
+    25634417,
+    25634420,
+    25634421,
+    25634422,
+    25634423,
+    25634425,
+    25634428,
+    25634429,
+    25634430,
+    25634436,
+    25634442,
+    25634448,
+    25634449,
+    25634487,
+    25634581,
+    25634582,
+    25634583,
+    25634584,
+    25634836,
+    25634864,
+    25634869,
+    25634880,
+    25634881,
+    25634883,
+    25634915,
+    25634916,
+    25634918,
+    25634920,
+    25634924,
+    25634925,
+    25634926,
+    25634927,
+    25634936,
+    25634938
+  ],
+  "post_only_records": 52,
+  "pre_only_connectors": [
+    25634935
+  ],
+  "focus_contacts": 280,
+  "focus_directed_pairs": 113,
+  "balancer_outgoing_contacts": 0,
+  "figure3_group_contact_sum": 280,
+  "raw_arbor_nodes": {
+    "4019221": 8280,
+    "4018492": 5042,
+    "4018688": 3127
+  },
+  "notes": [
+    "SSN source label mapped to ANN; SNN is a separate label.",
+    "Orphan records excluded without inventing missing partners.",
+    "Live CATMAID snapshot and pinned GitHub contacts are distinct versions; contact IDs checked.",
+    "Rooted skeleton trees do not establish all internal syncytial loops.",
+    "Raw CATMAID connectors retained but not mixed into the pinned contact table."
+  ]
+}
