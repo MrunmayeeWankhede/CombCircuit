@@ -39,11 +39,9 @@ The full spatial model has 16,601 compartments and 280 directed contacts. It run
 in a browser worker alongside a 158-cell point model, with a fixed 0.5 ms step.
 The speed control changes wall-clock pacing, not the numerical timestep.
 
-## Guide and walkthrough
+## Guide 
 
 - [Complete illustrated PDF guide](docs/CombCircuit-Live-Complete-Guide.pdf)
-- [14-minute narrated walkthrough](media/CombCircuit-Live-Walkthrough.mp4)
-- [Video transcript](docs/VIDEO_TRANSCRIPT.md) and [chapter guide](docs/VIDEO_CHAPTERS.md)
 - [Model equations](docs/MODEL.md), [live solver notes](docs/LIVE_MODEL.md)
   and [data audit](docs/DATA_AUDIT.md)
 - [Research plan](docs/STUDY_PLAN.md)
@@ -103,7 +101,7 @@ JSON exports are experiment logs, not resumable full-state checkpoints.
 - CATMAID arbors were retrieved separately on 2026-09-27; exact source URLs and
   hashes are recorded in `data/provenance.json`.
 
-We did not map these cells. The project's contribution is the modeling workbench
+I did not map these cells. The project's contribution is the modeling workbench
 and comparisons built on the original anatomy. No endorsement or established
 scientific novelty is claimed. Code is GPL-3.0; see [LICENSE](LICENSE) and
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for upstream attribution and terms.
